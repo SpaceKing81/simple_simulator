@@ -5,14 +5,14 @@ use crate::matrix::Matrix;
 
 pub struct Universe {
   matter:Vec<Partical>,
-  space:Matrix<bool>,
+  // space:Matrix<bool>,
   
 }
 impl Universe {
   pub fn new() -> Self {
     Universe {
       matter: Vec::new(),
-      space:Matrix::new(screen_height() as usize, screen_width() as usize, false),
+      // space:Matrix::new(screen_height() as usize, screen_width() as usize, false),
     }
   }
   pub fn fill(&mut self, n:u32) {
@@ -23,8 +23,9 @@ impl Universe {
       space_filled.append(&mut Self::get_circle(new.get_size() as usize, pos));
       self.matter.push(new);
     }
+    // for (x,y) in space_filled {self.space.set(y, x, true);}
   }
-  pub fn add(&mut self, pos:Vec2) {
+  pub fn add_partical(&mut self, pos:Vec2) {
     self.matter.push(Partical::place_new(pos));
   }
   

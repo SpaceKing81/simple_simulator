@@ -2,7 +2,7 @@ use macroquad::{math::{vec2, Vec2}, prelude::rand, window::{screen_height, scree
 
 const MASS_MODIFIER:f32 = 2.0;
 const GRAVITY:f32 = 1.0;
-const CHARGE:f32 = -1.0;
+// const CHARGE:f32 = -1.0;
 
 pub struct Partical {
   pub pos:Vec2, // current pos
@@ -63,11 +63,16 @@ impl Partical {
     let a = GRAVITY * d / (distance * distance);
     self.vel += a;
   }
+  fn acceleration_down(&mut self) {
+    self.vel.y -= 1.0;
+  }
+
 }
 
 
 // Helping fn
 impl Partical {
+  
   pub fn get_size(&self) -> f32 {
     let size= self.mass / MASS_MODIFIER;
     size

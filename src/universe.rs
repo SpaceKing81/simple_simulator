@@ -1,6 +1,6 @@
 use macroquad::prelude::*;
 
-use crate::partical::Partical;
+use crate::partical::{self, Partical};
 use crate::matrix::Matrix;
 
 pub struct Universe {
@@ -57,7 +57,13 @@ impl Universe {
 }
 // Mechanics
 impl Universe {
-  
+  pub fn test(&mut self) {
+    for i in 0..self.matter.len() {
+      let partical:&mut Partical = &mut self.matter[i];
+      partical.acceleration_down();
+      partical.forward();
+    }
+  }
 }
 
 

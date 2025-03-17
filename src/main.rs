@@ -17,7 +17,7 @@ fn window_conf() -> Conf {
     }
 }
 const PARTICAL_COUNT:u32 = 10;
-const IDEAL_TPS:f64 = 70.0;
+const IDEAL_TPS:f64 = 60.0;
 
 #[macroquad::main(window_conf)]
 async fn main() {
@@ -38,7 +38,7 @@ async fn main() {
         }
         loop {
             // Main simulation logic
-
+            universe.test();
 
             let time = if get_time() == 0.0 {0.02} else {get_time()};
             if ticks/time < IDEAL_TPS || is_key_down(KeyCode::Escape){ break; }

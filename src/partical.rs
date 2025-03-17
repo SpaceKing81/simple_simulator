@@ -1,6 +1,6 @@
 use macroquad::{math::{vec2, Vec2}, prelude::rand, window::{screen_height, screen_width}};
 
-const MASS_MODIFIER:f32 = 2.0;
+const MASS_MODIFIER:f32 = 1.0;
 const GRAVITY:f32 = 1.0;
 // const CHARGE:f32 = -1.0;
 
@@ -40,7 +40,7 @@ impl Partical {
 }
 // Mechanics
 impl Partical {
-  fn forward(&mut self) {
+  pub fn forward(&mut self) {
     self.pos += self.vel;
   }
   fn edge_case(&mut self) {
@@ -63,7 +63,7 @@ impl Partical {
     let a = GRAVITY * d / (distance * distance);
     self.vel += a;
   }
-  fn acceleration_down(&mut self) {
+  pub fn acceleration_down(&mut self) {
     self.vel.y -= 1.0;
   }
 
